@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  npm:
+    image: docker.io/jlesage/nginx-proxy-manager:latest
+    container_name: jlesage-nginx-proxy-manager
+    restart: unless-stopped
+    environment:
+      - DB_SQLITE_FILE=/data/database.sqlite
+      - DB_SQLITE_PASSWORD=changeme
+    volumes:
+      - /u01/mydev/containers-fs-layout/jlesage-nginx-proxy-manager/data:/data
+    ports:
+      - "7070:8080"
+      - "7443:4443"
+      - "9030:8181"
